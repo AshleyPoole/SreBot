@@ -1,5 +1,6 @@
 ﻿using Noobot.Core.Configuration;
 using Noobot.Modules.Dns;
+using Noobot.Modules.IncidentManagement;
 using Noobot.Modules.LoadBalancerDotOrg;
 using Noobot.Modules.NewRelic;
 using Noobot.Toolbox.Middleware;
@@ -17,19 +18,22 @@ namespace SreBot
 
 		private void RegisterCustomComponents()
 		{
-			UseMiddleware<LboMiddleware>();
-			UsePlugin<LboPlugin>();
+			this.UseMiddleware<LboMiddleware>();
+			this.UsePlugin<LboPlugin>();
 
-			UseMiddleware<NewRelicMiddleware>();
-			UsePlugin<NewRelicPlugin>();
+			this.UseMiddleware<NewRelicMiddleware>();
+			this.UsePlugin<NewRelicPlugin>();
 
-			UseMiddleware<DnsMiddleware>();
+			this.UseMiddleware<DnsMiddleware>();
+
+			this.UseMiddleware<IncidentManagementMiddleware>();
+			this.UsePlugin<IncidentManagementPlugin>();
 		}
 
 		private void RegisterNoobotToolboxComponents()
 		{
-			UseMiddleware<ScheduleMiddleware>();
-			UsePlugin<SchedulePlugin>();
+			this.UseMiddleware<ScheduleMiddleware>();
+			this.UsePlugin<SchedulePlugin>();
 		}
 	}
 }

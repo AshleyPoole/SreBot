@@ -32,6 +32,7 @@ namespace SreBot
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddMvc();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +43,16 @@ namespace SreBot
 				app.UseDeveloperExceptionPage();
 			}
 
-			var noobHost = new BotHost(new BotConfigReader(Configuration.GetSection("Bot")));
-			applicationLifetime.ApplicationStarted.Register(() => noobHost.Start(LogManager.GetLogger<BotHost>()));
+			var noobHost = new SreBotHost(new BotConfigReader(Configuration.GetSection("Bot")));
+			applicationLifetime.ApplicationStarted.Register(() => noobHost.Start(LogManager.GetLogger<SreBotHost>()));
 			applicationLifetime.ApplicationStopping.Register(noobHost.Stop);
+
+			app.UseMvc(routes =>
+			{
+				routes.MapRoute(
+					name: "default",
+					template: "{controller=Home}/{action=Index}/{id?}");
+			});
 		}
 	}
 }
