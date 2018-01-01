@@ -18,13 +18,14 @@ namespace SreBot
 
 		private void RegisterCustomComponents()
 		{
-			this.UseMiddleware<LboMiddleware>();
-			this.UsePlugin<LboPlugin>();
+			// this.UseMiddleware<LboMiddleware>();
+			// this.UsePlugin<LboPlugin>();
 
 			this.UseMiddleware<NewRelicMiddleware>();
 			this.UsePlugin<NewRelicPlugin>();
 
 			this.UseMiddleware<DnsMiddleware>();
+			this.UsePlugin<DnsPlugin>();
 
 			this.UseMiddleware<IncidentManagementMiddleware>();
 			this.UsePlugin<IncidentManagementPlugin>();
