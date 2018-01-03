@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
     <PackageReference Include="Noobot.Modules.DNS" Version="1.0.2" />
-    <PackageReference Include="Noobot.Modules.IncidentManagement" Version="1.0.1" />
+    <PackageReference Include="Noobot.Modules.IncidentManagement" Version="1.0.4" />
     <PackageReference Include="Noobot.Modules.LoadBalancerDotOrg" Version="1.0.2" />
     <PackageReference Include="Noobot.Modules.NewRelic" Version="1.0.2" />
   </ItemGroup>
