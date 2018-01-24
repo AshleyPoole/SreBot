@@ -1,0 +1,23 @@
+#https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+root = true
+
+#eveybody use tabs
+[*]
+indent_style = tab
+trim_trailing_whitespace = true
+
+#"this"
+dotnet_style_qualification_for_field = true:error
+dotnet_style_qualification_for_property = true:error
+dotnet_style_qualification_for_method = true:error
+dotnet_style_qualification_for_event = true:error
+
+#var
+csharp_style_var_for_built_in_types = true:error
+csharp_style_var_when_type_is_apparent = true:error
+csharp_style_var_elsewhere = true:error
+
+[*.cs]
+tab_size = 4
+dotnet_style_predefined_type_for_locals_parameters_members = true:error
+dotnet_sort_system_directives_first = true:error
