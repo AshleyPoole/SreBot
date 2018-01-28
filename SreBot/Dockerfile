@@ -6,8 +6,6 @@ COPY . .
 
 RUN dotnet publish -c Release -o /release ./SreBot.csproj
 
-RUN dir /release
-
 
 FROM microsoft/aspnetcore:2.0.0-nanoserver
 WORKDIR /app
