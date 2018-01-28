@@ -1,0 +1,6 @@
+.git/*
+.gitmodules/*
+*/*/bin/*
+.vs/*
+*/*/obj/*
+*/.vs/*
