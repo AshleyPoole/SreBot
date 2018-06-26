@@ -1,4 +1,5 @@
 ﻿using Noobot.Core.Configuration;
+using Noobot.Modules.Cloudflare;
 using Noobot.Modules.Dns;
 using Noobot.Modules.IncidentManagement;
 using Noobot.Modules.LoadBalancerDotOrg;
@@ -26,6 +27,9 @@ namespace SreBot
 
 			this.UseMiddleware<IncidentManagementMiddleware>();
 			this.UsePlugin<IncidentManagementPlugin>();
+
+			this.UseMiddleware<CloudflareMiddleware>();
+			this.UsePlugin<CloudflarePlugin>();
 		}
 	}
 }
