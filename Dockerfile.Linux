@@ -1,0 +1,29 @@
+# escape=`
+
+FROM microsoft/dotnet:2.1-sdk AS build
+
+WORKDIR /
+
+COPY /SreBot.sln .
+
+COPY /src/ ./src/
+
+RUN dotnet restore './SreBot.sln'
+
+RUN dotnet publish -c Release -o /output ./src/SreBot.Web/SreBot.Web.csproj
+
+
+
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
+
+LABEL maintainer="git@ashleypoole.co.uk"
+
+ENV ASPNETCORE_URLS http://+:80
+
+EXPOSE 80
+
+WORKDIR /app
+
+COPY --from=build /output .
+
+ENTRYPOINT ["dotnet", "SreBot.Web.dll"]

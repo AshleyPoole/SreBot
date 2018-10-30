@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SreBot.Controllers
+namespace SreBot.Web.Controllers
 {
 	public class HomeController : Controller
 	{
