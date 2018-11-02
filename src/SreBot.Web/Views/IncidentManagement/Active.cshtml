@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SharpBotCore.Modules.IncidentManagement.Models.Incident>
+
+@{
+	ViewData["Title"] = "Active Incidents";
+}
+
+<h2>Active Incidents</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.FriendlyId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FriendlyStatus)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ChannelName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DeclaredDateTimeUtc)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ResolvedDateTimeUtc)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model) {
+			<tr>
+				<td>
+					<a asp-area="" asp-controller="IncidentManagement" asp-action="Incident" asp-route-id=@item.Id>@Html.DisplayFor(modelItem => item.FriendlyId)</a>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.FriendlyStatus)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ChannelName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeclaredDateTimeUtc)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ResolvedDateTimeUtc)
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<p>** All times are in UTC **</p>

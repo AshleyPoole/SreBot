@@ -1,0 +1,92 @@
+﻿@model SharpBotCore.Modules.IncidentManagement.Models.Incident
+
+@{
+	ViewData["Title"] = $"Incident {Html.DisplayFor(model => model.FriendlyId)}";
+}
+
+<h2>Incident #@Html.DisplayFor(model => model.FriendlyId)</h2>
+
+<br/>
+
+<div>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.FriendlyId)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.FriendlyId)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.FriendlyStatus)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.FriendlyStatus)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Title)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Title)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.ChannelName)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.ChannelName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.DeclaredBy)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.DeclaredBy)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.DeclaredDateTimeUtc)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.DeclaredDateTimeUtc)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.ResolvedBy)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.ResolvedBy)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.ResolvedDateTimeUtc)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.ResolvedDateTimeUtc)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.PostmortermAddedBy)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PostmortermAddedBy)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.PostmortermLink)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PostmortermLink)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.ClosedBy)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.ClosedBy)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.ClosedDateTimeUtc)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.ClosedDateTimeUtc)
+		</dd>
+	</dl>
+</div>
+
+<p>** All times are in UTC **</p>
+
+<div>
+	<a class="btn btn-default btn-sm disabled">Back</a>
+</div>
