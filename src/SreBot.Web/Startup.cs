@@ -27,6 +27,8 @@ namespace SreBot.Web
 
 			services.RegisterSharpBotCoreAsHostedService(this.Configuration.GetSection("Bot"));
 			services.RegisterIncidentManagementModule(this.Configuration.GetSection("IncidentManagement"));
+
+			services.Configure<IncidentManagementWebConfiguration>(this.Configuration.GetSection("IncidentManagement.Web"));
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)

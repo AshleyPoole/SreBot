@@ -1,4 +1,7 @@
-﻿@model SharpBotCore.Modules.IncidentManagement.Models.Incident
+﻿@using Microsoft.Extensions.Options
+@using SreBot.Web
+@model SharpBotCore.Modules.IncidentManagement.Models.Incident
+@inject IOptions<IncidentManagementWebConfiguration> IncidentWebConfig
 
 @{
 	ViewData["Title"] = $"Incident {Html.DisplayFor(model => model.FriendlyId)}";
@@ -6,7 +9,7 @@
 
 <h2>Incident #@Html.DisplayFor(model => model.FriendlyId)</h2>
 
-<br/>
+<br />
 
 <div>
 	<dl class="dl-horizontal">
@@ -32,7 +35,7 @@
 			@Html.DisplayNameFor(model => model.ChannelName)
 		</dt>
 		<dd>
-			@Html.DisplayFor(model => model.ChannelName)
+			<a href="@IncidentWebConfig.Value.GetChannelUrl(Model.ChannelId)">@Html.DisplayFor(model => model.ChannelName)</a>
 		</dd>
 		<dt>
 			@Html.DisplayNameFor(model => model.DeclaredBy)

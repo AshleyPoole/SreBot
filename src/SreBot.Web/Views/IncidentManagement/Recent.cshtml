@@ -1,4 +1,7 @@
-﻿@model IEnumerable<SharpBotCore.Modules.IncidentManagement.Models.Incident>
+﻿@using Microsoft.Extensions.Options
+@using SreBot.Web
+@model IEnumerable<SharpBotCore.Modules.IncidentManagement.Models.Incident>
+@inject IOptions<IncidentManagementWebConfiguration> IncidentWebConfig
 
 @{
 	ViewData["Title"] = "Recent Incidents";
@@ -33,7 +36,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
+		@foreach (var item in Model.OrderByDescending(x => x.DeclaredDateTimeUtc))
 		{
 			<tr>
 				<td>
@@ -46,7 +49,7 @@
 					@Html.DisplayFor(modelItem => item.Title)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.ChannelName)
+					<a href="@IncidentWebConfig.Value.GetChannelUrl(item.ChannelId)">@Html.DisplayFor(modelItem => item.ChannelName)</a>
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.DeclaredDateTimeUtc)
