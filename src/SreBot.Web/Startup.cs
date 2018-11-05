@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 using SharpBotCore.Bot;
+using SharpBotCore.Modules.Cloudflare;
 using SharpBotCore.Modules.IncidentManagement;
 
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
@@ -25,8 +25,9 @@ namespace SreBot.Web
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-			services.RegisterSharpBotCoreAsHostedService(this.Configuration.GetSection("Bot"));
-			services.RegisterIncidentManagementModule(this.Configuration.GetSection("IncidentManagement"));
+			services.RegisterSharpBotCoreAsHostedService(this.Configuration.GetSection("Bot"))
+				.RegisterIncidentManagementModule(this.Configuration.GetSection("IncidentManagement"))
+				.RegisterCloudflareModule(this.Configuration.GetSection("Cloudflare"));
 
 			services.Configure<IncidentManagementWebConfiguration>(this.Configuration.GetSection("IncidentManagement.Web"));
 		}
