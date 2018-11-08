@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Microsoft.AspNetCore.Mvc;
+using CBot.Modules.IncidentManagement;
 
-using SharpBotCore.Modules.IncidentManagement;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SreBot.Web.Controllers
 {

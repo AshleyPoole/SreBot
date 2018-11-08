@@ -1,6 +1,4 @@
-﻿using SharpBotCore.Modules.IncidentManagement.Models;
-
-namespace SreBot.Web
+﻿namespace SreBot.Web
 {
 	public class IncidentManagementWebConfiguration
 	{

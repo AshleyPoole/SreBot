@@ -1,2 +1,2 @@
 # SreBot
-SreBot built on the Noobot framework
+SreBot built on the CBot framework
