@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   srebot:
-    image: "ashleypoole/srebot:latest"
+    image: "ashleypoole/srebotweb:latest"
     ports:
       - "8000:80"
     environment:
@@ -9,7 +9,7 @@ services:
      - "IncidentManagement:IncidentNotificationChannel=${INCIDENT_CHANNEL_NAME}"
      - "IncidentManagement:warrooms=${INCIDENT_WARROOM_NAMES}"
      - "IncidentManagement:AzureConnectionString=${INCIDENT_AZURE_CONNECTION_STRING}"
-     - "IncidentManagement:PostmortemTemplateLink={$INCIDENT_POSTMORTEM_LINK}"
+     - "IncidentManagement:PostmortemTemplateLink=${INCIDENT_POSTMORTEM_LINK}"
      - "IncidentManagement.Web:ChannelBaseUrl=${SLACK_CHANNEL_BASE_URL}"
      - "Cloudflare:AuthEmail=${CLOUDFLARE_AUTH_EMAIL}"
      - "Cloudflare:AuthKey=${CLOUDFLARE_AUTH_KEY}"
