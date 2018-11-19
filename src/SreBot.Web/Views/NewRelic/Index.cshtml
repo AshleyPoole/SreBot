@@ -1,7 +1,5 @@
-﻿@using Microsoft.Extensions.Options
-@using SreBot.Web
-@model IEnumerable<CBot.Modules.NewRelic.API.Models.Application>
-@inject IOptions<CBot.Modules.NewRelic.ModuleConfiguration> NewRelicConfig
+﻿@model IEnumerable<CBot.Modules.NewRelic.API.Models.Application>
+@inject CBot.Modules.NewRelic.ModuleConfiguration NewRelicConfig
 
 @{
 	ViewData["Title"] = "Unhealthy Applications";
@@ -38,29 +36,29 @@
 	<tbody>
 		@foreach (var item in Model)
 		{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Id)
-			</td>
-			<td>
-				<a href="@NewRelicConfig.Value.GetApplicationUrl(item.Id.ToString())" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.HealthStatus)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Reporting)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.LastReportedAt)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationSummary.ErrorRate)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationSummary.ApdexScore)
-			</td>
-		</tr>
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					<a href="@NewRelicConfig.GetApplicationUrl(item.Id.ToString())" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HealthStatus)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Reporting)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.LastReportedAt)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ApplicationSummary.ErrorRate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ApplicationSummary.ApdexScore)
+				</td>
+			</tr>
 		}
 	</tbody>
 </table>
