@@ -4,3 +4,4 @@
 .vs/*
 */*/obj/*
 */.vs/*
+*/*/appsettings.Development.json

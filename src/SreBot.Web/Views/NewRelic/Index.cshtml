@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Options
 @using SreBot.Web
 @model IEnumerable<CBot.Modules.NewRelic.API.Models.Application>
-@inject IOptions<NewRelicWebConfiguration> NewRelicWebConfig
+@inject IOptions<CBot.Modules.NewRelic.ModuleConfiguration> NewRelicConfig
 
 @{
 	ViewData["Title"] = "Unhealthy Applications";
@@ -43,7 +43,7 @@
 				@Html.DisplayFor(modelItem => item.Id)
 			</td>
 			<td>
-				<a href="@NewRelicWebConfig.Value.GetApplicationUrl(item.Id.ToString())" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
+				<a href="@NewRelicConfig.Value.GetApplicationUrl(item.Id.ToString())" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => item.HealthStatus)
