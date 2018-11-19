@@ -17,20 +17,14 @@ namespace SreBot.Web.Controllers
 			this.incidentRetriever = incidentRetriever;
 		}
 
-		[Route("")]
-		public IActionResult Index()
-		{
-			return this.View();
-		}
-
 		[Route("[action]/{id}")]
 		public async Task<IActionResult> Incident(Guid id)
 		{
 			return this.View(await this.incidentRetriever.GetIncidentById(id));
 		}
 
-		[Route("List/Active")]
-		public async Task<IActionResult> Active()
+		[Route("")]
+		public async Task<IActionResult> Index()
 		{
 			
 			return this.View(await this.incidentRetriever.GetActiveIncidents());

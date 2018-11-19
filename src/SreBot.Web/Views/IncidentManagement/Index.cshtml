@@ -1,10 +1,64 @@
-﻿
+﻿@using Microsoft.Extensions.Options
+@using SreBot.Web
+@model IEnumerable<CBot.Modules.IncidentManagement.Models.Incident>
+@inject IOptions<IncidentManagementWebConfiguration> IncidentWebConfig
+
 @{
-	ViewData["Title"] = "Incident Management";
+	ViewData["Title"] = "Active Incidents";
 }
 
-<h2>Incident Management</h2>
+<h2>Active Incidents</h2>
 
-<a class="btn btn-danger btn-lg" asp-area="" asp-controller="IncidentManagement" asp-action="Active">Active Incidents</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.FriendlyId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FriendlyStatus)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ChannelName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DeclaredDateTimeUtc)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ResolvedDateTimeUtc)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.OrderByDescending(x => x.DeclaredDateTimeUtc))
+		{
+			<tr>
+				<td>
+					<a asp-area="" asp-controller="IncidentManagement" asp-action="Incident" asp-route-id=@item.Id>@Html.DisplayFor(modelItem => item.FriendlyId)</a>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.FriendlyStatus)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					<a href="@IncidentWebConfig.Value.GetChannelUrl(item.ChannelId)">@Html.DisplayFor(modelItem => item.ChannelName)</a>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeclaredDateTimeUtc)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ResolvedDateTimeUtc)
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
 
-<a class="btn btn-info btn-lg" asp-area="" asp-controller="IncidentManagement" asp-action="Recent">Recent Incidents</a>
+<p>** All times are in UTC **</p>
+
+<a class="btn btn-info btn-lg" asp-area="" asp-controller="IncidentManagement" asp-action="Recent">Click here for Recent Incidents</a>
