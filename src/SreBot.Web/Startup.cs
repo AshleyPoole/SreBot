@@ -1,6 +1,7 @@
 ﻿using CBot.Bot;
 using CBot.Modules.Cloudflare;
 using CBot.Modules.IncidentManagement;
+using CBot.Modules.NewRelic;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ namespace SreBot.Web
 
 			services.RegisterCBotAsHostedService(this.Configuration.GetSection("Bot"))
 				.RegisterIncidentManagementModule(this.Configuration.GetSection("IncidentManagement"))
-				.RegisterCloudflareModule(this.Configuration.GetSection("Cloudflare"));
+				.RegisterCloudflareModule(this.Configuration.GetSection("Cloudflare"))
+				.RegisterNewRelicModule(this.Configuration.GetSection("NewRelic"));
 
 			services.Configure<IncidentManagementWebConfiguration>(this.Configuration.GetSection("IncidentManagement.Web"));
 		}

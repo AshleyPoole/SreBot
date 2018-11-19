@@ -1,0 +1,68 @@
+﻿@using Microsoft.Extensions.Options
+@using SreBot.Web
+@model IEnumerable<CBot.Modules.NewRelic.API.Models.Application>
+@inject IOptions<NewRelicWebConfiguration> NewRelicWebConfig
+
+@{
+	ViewData["Title"] = "Unhealthy Applications";
+}
+
+<h2>Unhealthy Applications</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.HealthStatus)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Reporting)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.LastReportedAt)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ApplicationSummary.ErrorRate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ApplicationSummary.ApdexScore)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Id)
+			</td>
+			<td>
+				<a href="@NewRelicWebConfig.Value.GetApplicationUrl(item.Id.ToString())" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.HealthStatus)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Reporting)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.LastReportedAt)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ApplicationSummary.ErrorRate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ApplicationSummary.ApdexScore)
+			</td>
+		</tr>
+		}
+	</tbody>
+</table>
+
+<a class="btn btn-info btn-lg disabled" asp-area="" asp-controller="NewRelic" asp-action="All">Click here for All Applications</a>
