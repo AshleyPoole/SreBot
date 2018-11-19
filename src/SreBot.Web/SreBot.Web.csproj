@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="CBot" Version="1.0.1" />
-    <PackageReference Include="CBot.Modules.Cloudflare" Version="1.0.1" />
-    <PackageReference Include="CBot.Modules.IncidentManagement" Version="1.0.1" />
+    <PackageReference Include="CBot.Modules.Cloudflare" Version="1.0.2" />
+    <PackageReference Include="CBot.Modules.IncidentManagement" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.1" />
