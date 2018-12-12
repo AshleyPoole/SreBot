@@ -71,7 +71,7 @@
 			@Html.DisplayNameFor(model => model.PostmortermLink)
 		</dt>
 		<dd>
-			@Html.DisplayFor(model => model.PostmortermLink)
+			<a href="@Model.CleanPostmortemLink">@Html.DisplayFor(model => model.CleanPostmortemLink)</a>
 		</dd>
 		<dt>
 			@Html.DisplayNameFor(model => model.ClosedBy)
