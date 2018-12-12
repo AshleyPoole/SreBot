@@ -9,56 +9,63 @@
 
 <h2>Active Incidents</h2>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.FriendlyId)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.FriendlyStatus)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Title)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.ChannelName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.DeclaredDateTimeUtc)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.ResolvedDateTimeUtc)
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model.OrderByDescending(x => x.DeclaredDateTimeUtc))
-		{
+@if (!Model.Any())
+{
+<p>Great news! There's no active incidents.</p>
+}
+else
+{
+	<table class="table">
+		<thead>
 			<tr>
-				<td>
-					<a asp-area="" asp-controller="IncidentManagement" asp-action="Incident" asp-route-id=@item.Id>@Html.DisplayFor(modelItem => item.FriendlyId)</a>
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.FriendlyStatus)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Title)
-				</td>
-				<td>
-					<a href="@IncidentWebConfig.Value.GetChannelUrl(item.ChannelId)">@Html.DisplayFor(modelItem => item.ChannelName)</a>
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.DeclaredDateTimeUtc)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ResolvedDateTimeUtc)
-				</td>
+				<th>
+					@Html.DisplayNameFor(model => model.FriendlyId)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.FriendlyStatus)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Title)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.ChannelName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.DeclaredDateTimeUtc)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.ResolvedDateTimeUtc)
+				</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			@foreach (var item in Model.OrderByDescending(x => x.DeclaredDateTimeUtc))
+			{
+				<tr>
+					<td>
+						<a asp-area="" asp-controller="IncidentManagement" asp-action="Incident" asp-route-id=@item.Id>@Html.DisplayFor(modelItem => item.FriendlyId)</a>
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FriendlyStatus)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Title)
+					</td>
+					<td>
+						<a href="@IncidentWebConfig.Value.GetChannelUrl(item.ChannelId)">@Html.DisplayFor(modelItem => item.ChannelName)</a>
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.DeclaredDateTimeUtc)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ResolvedDateTimeUtc)
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 
-<p>** All times are in UTC **</p>
+	<p>** All times are in UTC **</p>
+}
 
 <a class="btn btn-info btn-lg" asp-area="" asp-controller="IncidentManagement" asp-action="Recent">Click here for Recent Incidents</a>
