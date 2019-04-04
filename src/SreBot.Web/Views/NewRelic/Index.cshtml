@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CBot.Modules.NewRelic.API.Models.Application>
+﻿@model SreBot.Web.ViewModels.NewRelic.ApplicationListViewModel
 @inject CBot.Modules.NewRelic.ModuleConfiguration NewRelicConfig
 
 @{
@@ -7,34 +7,47 @@
 
 <h2>Unhealthy Applications</h2>
 
+@using (Html.BeginForm())
+{
+<div class="form-inline">
+	<div class="form-group">
+		<label>Account:</label>
+		@Html.DropDownListFor(
+			model => model.SelectedAccount,
+			Model.AccountNames.Select(n => new SelectListItem { Text = n, Value = n }),
+			new { @class = "form-control", @onChange = "this.form.submit()" })
+	</div>
+</div>
+}
+
 <table class="table">
 	<thead>
 		<tr>
 			<th>
-				@Html.DisplayNameFor(model => model.Id)
+				@Html.DisplayName("Id")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Name)
+				@Html.DisplayName("Name")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.HealthStatus)
+				@Html.DisplayName("Health Status")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Reporting)
+				@Html.DisplayName("Reporting")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.LastReportedAt)
+				@Html.DisplayName("Last Reported At")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.ApplicationSummary.ErrorRate)
+				@Html.DisplayName("Error Rate")
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.ApplicationSummary.ApdexScore)
+				@Html.DisplayName("Apdex Score")
 			</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
+		@foreach (var item in Model.Applications)
 		{
 			<tr>
 				<td>
